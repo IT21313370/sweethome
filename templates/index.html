@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>House Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+
+            const form = document.querySelector('form');
+            const formData = new FormData(form);
+
+            fetch('/predict', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                Swal.fire({
+                    title: 'Predicted House Price',
+                    text: `The predicted house price is: ${data.predicted_house_price}`,
+                    icon: 'success'
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</head>
+<body>
+    <header  style="background-color: rgb(240, 209, 107);">
+        <h1>House Price Prediction <img src="../static//img/market.png" alt="house icon" style="width: 50px;"/></h1>
+    </header>
+
+    <img src="../static/img/office.png" alt="businessman"  style="width: 300px; z-index: -2; margin-left: 6%; float: left; margin-top: 20%; margin-right: 6.5%;"/>
+
+    <form onsubmit="handleSubmit(event)">
+        <div class="input-group">
+            <label for="longitude">Longitude:</label>
+            <input type="text" id="longitude" name="longitude" required><br><br>
+        </div>
+
+        <div class="input-group">
+            <label for="latitude">Latitude:</label>
+            <input type="text" id="latitude" name="latitude" required><br><br>
+        </div>
+
+        <div class="input-group">
+            <label for="median_income">Median Income:</label>
+            <input type="text" id="median_income" name="median_income" required><br><br>
+        </div>
+
+        <div class="input-group">
+            <label for="housing_median_age">Housing Median Age:</label>
+            <input type="text" id="housing_median_age" name="housing_median_age" required><br><br>    
+        </div>
+
+        <div class="input-group">
+            <label for="total_rooms">Total Rooms:</label>
+            <input type="text" id="total_rooms" name="total_rooms" required><br><br>
+        </div>
+
+
+        <div class="input-group">
+            <label for="total_bedrooms">Total Bedrooms:</label>
+            <input type="text" id="total_bedrooms" name="total_bedrooms" required><br><br>                
+        </div>
+
+        <div class="input-group">
+            <label for="population">Population:</label>
+            <input type="text" id="population" name="population" required><br><br>                
+        </div>
+
+        <div class="input-group">
+            <label for="households">Households:</label>
+            <input type="text" id="households" name="households" required><br><br>                
+        </div>
+
+        <!-- Additional input field for median_house_value -->
+        <!-- <label for="median_house_value">Median House Value:</label>
+        <input type="text" id="median_house_value" name="median_house_value" required><br><br> -->
+
+        <!-- Dropdown selection for categorical features -->
+        <label for="ocean_proximity">Ocean Proximity:</label>
+        <select id="ocean_proximity" name="ocean_proximity" required>
+            <option value="0">Near Bay</option>
+            <option value="1">Less than 1H</option>
+            <option value="2">Inland</option>
+            <option value="3">Near Ocean</option>
+            <option value="4">Island</option>
+        </select><br><br>
+
+        <input type="submit" value="Predict">
+    </form>
+    <img src="../static/img/handshake.png" alt="girl with house"  style="width: 300px; z-index: -2; margin-top: -20%; float: right; margin-right: 8%;"/>
+    <footer style="background-color: rgb(163, 156, 156); padding: 0.5%; text-align: center; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 12px; width: 100%;">
+        &copy; 2023 All Rights reserved @sweethome.com
+    </footer>
+</body>
+</html>
