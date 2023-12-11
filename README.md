@@ -31,7 +31,7 @@ This repository contains the code and resources for a project focused on predict
   
 Feel free to explore the project and use the provided resources for your analysis or predictive modeling tasks related to house price prediction.
 
-![Image Description]([https://your-image-url.com/image.png](https://drive.google.com/file/d/14_5Sog95EcL96Erg5WzUexNADZ5YRXfK/view?usp=sharing)https://drive.google.com/file/d/14_5Sog95EcL96Erg5WzUexNADZ5YRXfK/view?usp=sharing)
+![Image Description](https://github.com/IT21313370/sweethome/blob/main/Web%20capture_11-12-2023_225442_sweethome-kvq8.onrender.com.jpeg)
 
 
 ---
