@@ -5,7 +5,7 @@ import numpy as np
 app = Flask(__name__)
 
 # Load the trained machine learning model
-model = joblib.load('best_model_001.pkl')  # Replace 'best_model.pkl' with your actual model file
+model = joblib.load('best_model_001.pkl')  
 
 # Render the HTML form on the home page
 @app.route('/')
@@ -18,7 +18,7 @@ def predict_house_price(data):
         float(data['longitude']), float(data['latitude']), float(data['housing_median_age']),
         float(data['total_rooms']), float(data['total_bedrooms']), float(data['population']),
         float(data['households']), float(data['median_income']),
-        int(data['ocean_proximity'])  # Update this key accordingly
+        int(data['ocean_proximity'])
     ]
 
     # Make prediction
